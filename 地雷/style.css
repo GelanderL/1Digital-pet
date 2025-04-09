@@ -1,0 +1,148 @@
+body {
+    margin: 0;
+    background: url('your_background.png');
+    background-size: 126px 83px; /* 保持原有的背景大小 */
+    background-repeat: no-repeat;
+    touch-action: manipulation;
+    width: 126px;
+    height: 83px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 确保 container 布局不会影响子元素居中 */
+.container {
+    padding: 0; /* 清除内边距 */
+    margin: 0; /* 清除外边距 */
+    text-align: center;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.pet {
+    width: auto;
+    height: auto;
+    margin: auto;
+    position: absolute;
+    top: 50%; 
+    left: 50%; 
+    /* 在水平居中的基础上，垂直向下移动 0.3 厘米 */
+    transform: translate(-50%, calc(-50% + 0.3cm)); 
+}
+
+.pet img {
+    max-width: 100%;
+    height: auto;
+    animation: float 3s ease-in-out infinite;
+    transform: none; 
+}
+
+/* 定义待机动画 */
+@keyframes idleAnimation {
+    0% {
+        background-image: url('idle_1.png');
+    }
+    33% {
+        background-image: url('idle_2.png');
+    }
+    66% {
+        background-image: url('idle_3.png');
+    }
+    100% {
+        background-image: url('idle_1.png');
+    }
+}
+
+.pet.idle {
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    /* 确保动画名称一致 */
+    animation: idleAnimation 1s steps(1) infinite; 
+    transform: none; 
+}
+
+.icons {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    top: calc(10px - 8px); /* 图标向上移动 8 像素（之前上移 3 像素，现在再上移 5 像素） */
+    left: 50%;
+    transform: translateX(-50%);
+    margin-bottom: 5px;
+    flex-wrap: nowrap;
+}
+
+/* 互动图标样式 */
+.icons img {
+    width: 60px;
+    height: 60px;
+    margin: 0 -23px; /* 设置图标间距为 -23 像素 */
+    cursor: pointer;
+}
+
+.backpack {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+/* 移除饱食度和心情指数相关样式 */
+.progress-bar,
+.icon,
+.progress,
+#hunger-bar,
+#mood-bar,
+.progress-label {
+    display: none;
+}
+
+/* 进度条容器 */
+.progress-bar {
+    width: 100%;
+    background-color: #f3f3f3;
+    border-radius: 5px;
+    margin-bottom: 2px;
+    display: flex;
+    align-items: center;
+}
+
+/* 图标 */
+.icon {
+    margin-right: 2px;
+    font-size: 12px;
+}
+
+/* 进度条 */
+.progress {
+    height: 10px;
+    border-radius: 5px;
+}
+
+/* 饱食度进度条颜色 */
+#hunger-bar {
+    background-color: #FFFF99;
+}
+
+/* 心情度进度条颜色 */
+#mood-bar {
+    background-color: #FFB6C1;
+}
+
+/* 进度条标签 */
+.progress-label {
+    position: relative;
+    top: -10px;
+    left: 2px;
+    color: white;
+    font-size: 10px;
+}
