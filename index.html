@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>双人电子宠物</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- 引入 Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- 互动图标 -->
+        <div class="icons">
+            <img id="love-icon" src="love.png" alt="爱心互动">
+            <img id="feed-icon" src="feed.png" alt="喂食">
+            <img id="exercise-icon" src="exercise.png" alt="运动">
+            <img id="study-icon" src="study.png" alt="学习">
+        </div>
+        <!-- 宠物显示区域 -->
+        <div id="pet" class="pet">
+            <img id="pet-normal" src="your_normal_pet_image.png" alt="平常的宠物">
+            <img id="pet-happy" src="your_happy_image.png" alt="开心的宠物" style="display: none;">
+            <img id="pet-sad" src="your_sad_image.png" alt="难过的宠物" style="display: none;">
+            <div class="status">
+                <!-- 饱食度血条 -->
+                <div class="progress-bar">
+                    <span class="icon">🍖</span>
+                    <span class="progress" id="hunger-bar"></span>
+                </div>
+                <!-- 心情度血条 -->
+                <div class="progress-bar">
+                    <span class="icon">😀</span>
+                    <span class="progress" id="mood-bar"></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 背包页面（初始隐藏） -->
+        <div id="backpack" class="backpack" style="display: none;">
+            <h2>背包</h2>
+            <!-- 修改按钮文本和 onclick 参数 -->
+            <button onclick="selectFood('青菜')">青菜</button>
+            <button onclick="selectFood('奶酪')">奶酪</button>
+            <button onclick="selectFood('面包')">面包</button>
+            <button onclick="selectFood('牛奶')">牛奶</button>
+            <button onclick="selectFood('西红柿')">西红柿</button>
+            <button onclick="selectFood('米饭')">米饭</button>
+            <button onclick="closeBackpack()">关闭</button>
+        </div>
+    </div>
+
+    <script src="firebase-init.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
